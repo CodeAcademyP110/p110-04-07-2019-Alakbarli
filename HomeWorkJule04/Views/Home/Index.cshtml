@@ -1,0 +1,136 @@
+﻿@using HomeWorkJule04.Models
+@using HomeWorkJule04.VModel
+@model IndexVm
+<section class="site-hero overlay" style="background-image: url(/Temp/img/@Model.VmSlides.FirstOrDefault().BgImage">
+    <div class="container">
+        <div class="row site-hero-inner align-items-center">
+            <div class="col-md-7 text-left ml-auto">
+                <h1 class="heading" data-aos="fade-up">@Model.VmSlides.FirstOrDefault().Heading</h1>
+                <p class="sub-heading mb-5" data-aos="fade-up" data-aos-delay="100">@Model.VmSlides.FirstOrDefault().HeadingDetail</p>
+                <p data-aos="fade-up" data-aos-delay="100"><a href="#" class="btn uppercase btn-primary mr-md-2 mr-0 mb-3 d-sm-inline d-block">Get In Touch</a> <a href="#" class="btn uppercase btn-outline-light d-sm-inline d-block">Download</a></p>
+            </div>
+        </div>
+        <a href="#next-section" class="smoothscroll scroll-down">Scroll Down</a>
+    </div>
+</section>
+<!-- END section -->
+
+<section class="section visit-section" id="next-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="heading" data-aos="fade-up">Popular Properties</h2>
+            </div>
+        </div>
+        <div class="row">
+
+            @foreach (var pp in Model.VmpopularDes.Take(4))
+            {
+                <div class="col-lg-3 col-md-6 visit mb-3" data-aos="fade-up">
+                    <a href="property-single.html"><img src="/Temp/img/@pp.BgImage" alt="Image placeholder" class="img-fluid rounded"> </a>
+                    <h3><a href="property-single.html">@pp.Price</a></h3>
+                    <div class="reviews-star float-left">
+                        @pp.Address
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+</section>
+<!-- END section -->
+
+<section class="section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2>Happy Customers</h2>
+            </div>
+        </div>
+        <div class="js-carousel-1 owl-carousel">
+            @foreach(var hc in Model.VmHappyCostumers.Take(3))
+            {
+            <div class="testimonial text-center">
+                <div class="author-image mb-3">
+                    <img src="~/Temp/img/@hc.img" alt="Image placeholder" class="rounded-circle">
+                </div>
+                <blockquote>
+
+                    <p>&ldquo;@hc.Commet&rdquo;</p>
+                </blockquote>
+                <p><em>&mdash; @hc.Name</em></p>
+
+            </div>
+            }
+            
+
+            
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <img src="~/Temp/img/@Model.VmAbout.FirstOrDefault().BigImage" alt="Image" class="img-fluid rounded img-shadow">
+            </div>
+            <div class="col-lg-4 ml-auto">
+                <h3 class="mb-3">About Me</h3>
+                <p>@Model.VmAbout.FirstOrDefault().Content</p>
+                <p><img src="~/Temp/img/signature.jpg" alt="Image" class="img-fluid w-25"></p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            @foreach (var divA in Model.VmFeatures.Take(3))
+            {
+                 <div class="col-md-6 mb-4 mb-lg-0 col-lg-4 text-center">
+                    <span class="@divA.Icon display-3 text-primary"></span>
+                    <h3 class="@divA.Heading"></h3>
+                     <p>@divA.Content</p>
+                 </div>
+            }
+            
+
+        </div>
+    </div>
+</section>
+
+
+<section class="section bg-light">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-md-8">
+                <h2 class="heading" data-aos="fade-up">@Model.VmRecentBlog.FirstOrDefault().Heading</h2>
+                <p class="lead" data-aos="fade-up">@Model.VmRecentBlog.FirstOrDefault().Content</p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var d in Model.VmRecentBlogContents.Take(3))
+            {
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 post" data-aos="fade-up" data-aos-delay="100">
+
+                    <div class="media media-custom d-block mb-4">
+                        <a href="blog-single.html" class="mb-4 d-block"><img src="~/Temp/img/@d.img" alt="Image placeholder" class="img-fluid"></a>
+                        <div class="media-body">
+                            <span class="meta-post">@d.Date.ToString().Substring(0,10)</span>
+                            <h2 class="mt-0 mb-3"><a href="#">@d.Question</a></h2>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+           
+        </div>
+    </div>
+</section>
+<!-- END section -->
